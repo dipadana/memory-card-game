@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+}
+
+.front {
+  background-color: lightgrey;
+  width: 100px;
+  height: 130px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.frontClicked {
+  background-color: rgb(36, 95, 36);
+  width: 100px;
+  height: 130px;
+  cursor: pointer;
+  margin: 5px;
+}
