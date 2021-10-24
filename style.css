@@ -11,6 +11,16 @@
 }
 
 .frontClicked {
+  color: white;
+  background-color: grey;
+  width: 100px;
+  height: 130px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.frontTrue {
+  color: white;
   background-color: rgb(36, 95, 36);
   width: 100px;
   height: 130px;
