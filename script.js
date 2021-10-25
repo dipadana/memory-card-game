@@ -1,3 +1,5 @@
+const arrayData = [1, 2, 3];
+
 let card1 = "";
 let card2 = "";
 
@@ -38,3 +40,14 @@ function cardChecker() {
     }, 200);
   }
 }
+
+function displayCard() {
+  const doubledArrayData = [...arrayData, ...arrayData];
+  const container = document.querySelector(".container");
+  doubledArrayData.forEach((value) => {
+    container.innerHTML += `<div class="front" name="${value}" clicked="false" onclick="cardClicked(event)">
+          ${value}
+        </div>`;
+  });
+}
+displayCard();
