@@ -1,29 +1,54 @@
 .container {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.front {
+.card-container {
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  width: 40%;
+}
+
+.card {
+  width: 100px;
+  height: 130px;
+  cursor: pointer;
+  margin: 5px;
+  perspective: 1000px;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.3s;
+  transform-style: preserve-3d;
+}
+
+.flipped-card {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.card-back {
   background-color: lightgrey;
-  width: 100px;
-  height: 130px;
-  cursor: pointer;
-  margin: 5px;
+  color: black;
 }
 
-.frontClicked {
+.card-front {
+  background-color: #2980b9;
   color: white;
-  background-color: grey;
-  width: 100px;
-  height: 130px;
-  cursor: pointer;
-  margin: 5px;
-}
-
-.frontTrue {
-  color: white;
-  background-color: rgb(36, 95, 36);
-  width: 100px;
-  height: 130px;
-  cursor: pointer;
-  margin: 5px;
+  transform: rotateY(180deg);
 }
