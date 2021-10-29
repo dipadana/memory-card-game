@@ -9,11 +9,12 @@
   background-color: white;
   display: flex;
   flex-wrap: wrap;
-  width: 40%;
+  justify-content: center;
+  width: calc(100px * 4);
 }
 
 .card {
-  width: 100px;
+  width: 90px;
   height: 130px;
   cursor: pointer;
   margin: 5px;

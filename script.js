@@ -1,26 +1,27 @@
-const arrayData = [1, 2, 3, 4, 6, 7, 8, 9];
+const arrayData = [1, 2, 3, 4, 5, 6, 7, 8];
 
 let card1 = "";
 let card2 = "";
+let score = 0;
 
 async function cardClicked(element) {
-  if (element.target.getAttribute("clicked") === "true") return;
-
   //developer.mozilla.org/en-US/docs/Web/API/Event/composedPath
   //developer.mozilla.org/en-US/docs/Web/API/Element/classList
+  const selectedCard = element.composedPath()[1];
 
   if (card1 === "") {
-    card1 = element.composedPath()[1];
+    card1 = selectedCard;
     card1.classList.add("flipped-card");
-    card1.setAttribute("clicked", "true");
-  } else {
-    card2 = element.composedPath()[1];
+  } else if (
+    card2 === "" &&
+    card1.getAttribute("id") !== selectedCard.getAttribute("id")
+  ) {
+    card2 = selectedCard;
     card2.classList.add("flipped-card");
-    card2.setAttribute("clicked", "true");
-  }
 
-  if (card1 && card2) {
-    cardChecker();
+    if (card1 && card2) {
+      cardChecker();
+    }
   }
 }
 
@@ -29,13 +30,14 @@ function cardChecker() {
     card1 = "";
     card2 = "";
     console.log("card match");
+
+    score += 100 / 8;
+    console.log(score);
   } else {
     console.log("card not match");
     setTimeout(() => {
       card1.classList.remove("flipped-card");
       card2.classList.remove("flipped-card");
-      card1.setAttribute("clicked", "false");
-      card2.setAttribute("clicked", "false");
       card1 = "";
       card2 = "";
     }, 300);
@@ -59,16 +61,17 @@ function displayCard() {
   const doubledArrayData = [...arrayData, ...arrayData];
   mixArray(doubledArrayData);
   const container = document.querySelector(".card-container");
-  doubledArrayData.forEach((value) => {
+  doubledArrayData.forEach((value, i) => {
     container.innerHTML += `
       <div class="card">
         <div
           class="card-inner"
           name="${value}"
+          id="IDC${Date.now() + i}"
           clicked="false"
           onclick="cardClicked(event)"
         >
-          <div class="card-front">${value}</div>
+          <div disabled="true" class="card-front">${value}</div>
           <div class="card-back"></div>
         </div>
       </div>
