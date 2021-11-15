@@ -1,4 +1,6 @@
+const container = document.querySelector(".card-container");
 const arrayData = [1, 2, 3, 4, 5, 6, 7, 8];
+const totalSec = 5;
 
 let card1 = "";
 let card2 = "";
@@ -31,8 +33,7 @@ function cardChecker() {
     card2 = "";
     console.log("card match");
 
-    score += 100 / 8;
-    console.log(score);
+    calculateScore();
   } else {
     console.log("card not match");
     setTimeout(() => {
@@ -42,6 +43,12 @@ function cardChecker() {
       card2 = "";
     }, 300);
   }
+}
+
+function calculateScore() {
+  score += 100 / 8;
+  document.querySelector("#scoreNumber").innerHTML = `Score: ${score}`;
+  console.log(score);
 }
 
 function mixArray(a, b, c, d) {
@@ -60,7 +67,8 @@ function mixArray(a, b, c, d) {
 function displayCard() {
   const doubledArrayData = [...arrayData, ...arrayData];
   mixArray(doubledArrayData);
-  const container = document.querySelector(".card-container");
+
+  container.innerHTML = "";
   doubledArrayData.forEach((value, i) => {
     container.innerHTML += `
       <div class="card">
@@ -78,4 +86,35 @@ function displayCard() {
     `;
   });
 }
-displayCard();
+
+function gameTime() {
+  let sec = totalSec;
+  const myTimer = setInterval(() => {
+    sec -= 1;
+    document.querySelector("#timeNumber").innerHTML = `Time: ${sec}`;
+    if (sec === 0) {
+      clearInterval(myTimer);
+      alert(`Your score: ${score}`);
+      initGame();
+    }
+  }, 1000);
+}
+
+function startGame() {
+  document.querySelector("#scoreNumber").innerHTML = `Score: ${score}`;
+  document.querySelector("#timeNumber").innerHTML = `Time: ${totalSec}`;
+  gameTime();
+  displayCard();
+}
+
+function initGame() {
+  card1 = "";
+  card2 = "";
+  score = 0;
+  document.querySelector("#scoreNumber").innerHTML = "";
+  document.querySelector("#timeNumber").innerHTML = "";
+  container.innerHTML = `
+    <button onclick="startGame()">Start</button>
+  `;
+}
+initGame();
