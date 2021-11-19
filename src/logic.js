@@ -1,6 +1,6 @@
 const container = document.querySelector(".card-container");
 const arrayData = [1, 2, 3, 4, 5, 6, 7, 8];
-const totalSec = 5;
+const totalSec = 10;
 
 let card1 = "";
 let card2 = "";
@@ -29,7 +29,6 @@ function cardClicked(element) {
 
 function cardChecker() {
   if (card1.getAttribute("name") === card2.getAttribute("name")) {
-    console.log("card match");
     card1 = "";
     card2 = "";
 
@@ -37,7 +36,6 @@ function cardChecker() {
     // and sum all function
     calculateScore();
   } else {
-    console.log("card not match");
     setTimeout(() => {
       card1.classList.remove("flipped-card");
       card2.classList.remove("flipped-card");
@@ -50,7 +48,6 @@ function cardChecker() {
 function calculateScore() {
   score += 100 / 8;
   document.querySelector("#scoreNumber").innerHTML = `Score: ${score}`;
-  console.log(score);
 }
 
 function mixArray(a, b, c, d) {
@@ -119,4 +116,5 @@ function initGame() {
     <button onclick="startGame()">Start</button>
   `;
 }
-initGame();
+
+export { cardClicked, startGame, initGame };
