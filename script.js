@@ -6,7 +6,7 @@ let card1 = "";
 let card2 = "";
 let score = 0;
 
-async function cardClicked(element) {
+function cardClicked(element) {
   //developer.mozilla.org/en-US/docs/Web/API/Event/composedPath
   //developer.mozilla.org/en-US/docs/Web/API/Element/classList
   const selectedCard = element.composedPath()[1];
@@ -29,10 +29,12 @@ async function cardClicked(element) {
 
 function cardChecker() {
   if (card1.getAttribute("name") === card2.getAttribute("name")) {
+    console.log("card match");
     card1 = "";
     card2 = "";
-    console.log("card match");
 
+    // If card match and call calculateScore function
+    // and sum all function
     calculateScore();
   } else {
     console.log("card not match");
