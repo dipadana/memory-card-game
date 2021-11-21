@@ -3,7 +3,6 @@
 // it's will break the flipped card function in logic.js
 
 .card-container {
-  background-color: white;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -41,12 +40,24 @@
 }
 
 .card-back {
-  background-color: lightgrey;
-  color: black;
+  background-color: #5099c9;
+  border-radius: 5px;
+  color: white;
 }
 
 .card-front {
-  background-color: #2980b9;
-  color: white;
+  background-color: rgb(235, 235, 235);
+  border-radius: 5px;
+  color: black;
   transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-image {
+  width: 70px;
+  // height: 70%;
+  // background-size: cover;
+  // background-position: center;
 }
