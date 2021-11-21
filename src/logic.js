@@ -1,3 +1,13 @@
+import { mixArray } from "./helpers";
+
+// Init first component of game
+document.getElementById("app").innerHTML = `
+        <p>Memory Card Game</p>
+        <p id="scoreNumber"></p>
+        <p id="timeNumber"></p>
+        <div class="card-container"></div>
+      `;
+
 const container = document.querySelector(".card-container");
 const arrayData = [1, 2, 3, 4, 5, 6, 7, 8];
 const totalSec = 10;
@@ -48,19 +58,6 @@ function cardChecker() {
 function calculateScore() {
   score += 100 / 8;
   document.querySelector("#scoreNumber").innerHTML = `Score: ${score}`;
-}
-
-function mixArray(a, b, c, d) {
-  //https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
-  //Fisher-Yates shuffle algorithm
-  //array,placeholder,placeholder,placeholder
-
-  c = a.length;
-  while (c)
-    (b = (Math.random() * (--c + 1)) | 0),
-      (d = a[c]),
-      (a[c] = a[b]),
-      (a[b] = d);
 }
 
 function displayCard() {

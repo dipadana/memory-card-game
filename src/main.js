@@ -1,4 +1,4 @@
-import "./style/style.css";
+import "./style/style.scss";
 import { cardClicked, startGame, initGame } from "./logic";
 
 window.cardClicked = cardClicked;
