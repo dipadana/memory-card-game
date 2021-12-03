@@ -1,15 +1,17 @@
 const container = document.querySelector(".card-container");
 const arrayData = [1, 2, 3, 4, 5, 6, 7, 8];
-const totalSec = 5;
+const totalSec = 100;
 
 let card1 = "";
 let card2 = "";
 let score = 0;
 
-function cardClicked(element) {
-  //developer.mozilla.org/en-US/docs/Web/API/Event/composedPath
-  //developer.mozilla.org/en-US/docs/Web/API/Element/classList
-  const selectedCard = element.composedPath()[1];
+function cardClicked(event) {
+  // Alternative for line 14
+  // developer.mozilla.org/en-US/docs/Web/API/Event/composedPath
+  // developer.mozilla.org/en-US/docs/Web/API/Element/classList
+  // const selectedCard = event.composedPath()[1];
+  const selectedCard = event.target.parentNode;
 
   if (card1 === "") {
     card1 = selectedCard;
